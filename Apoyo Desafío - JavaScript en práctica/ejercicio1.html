@@ -50,34 +50,37 @@
         </div>
     </div>
     <script>
-     function exito() {
+        function limpiar() {
+            document.querySelector(".resultado").innerHTML = " ";
+            document.querySelector(".errorNombre").innerHTML = " ";
+            document.querySelector(".errorAsunto").innerHTML = " ";
+            document.querySelector(".errorMensaje").innerHTML = " ";
+
+        }
+
+        function exito() {
             document.querySelector(".resultado").innerHTML =
                 "Mensaje enviado con éxito !!!";
         }
-        function limpiar() {
-        document.querySelector(".resultado").innerHTML = " ";
-        document.querySelector(".errorNombre").innerHTML = " ";
-        document.querySelector(".errorAsunto").innerHTML = " ";
-        document.querySelector(".errorMensaje").innerHTML = " ";
-      }
-      let
 
         function validar(nombre, asunto, mensaje) {
             let validación = true;
-            let expresion = /[a-zA-Z]\w+/;
-            if (nombre == "" || expresion.test(nombre) == false) {
+            let expresionNombre = /[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+            let expresionAsunto = /[a-zA-Z]\w+/;
+            let expresionMensaje = /[a-zA-Z]\w+/;
+            if (nombre == "" || expresionNombre.test(nombre) == false) {
                 document.querySelector(".errorNombre").innerHTML =
-                    "El nombre es requerido ";
+                    "El nombre es requerido";
                 validación = false;
             }
-            if (asunto == "" || expresion.test(asunto) == false) {
+            if (asunto == "" || expresionAsunto.test(asunto) == false) {
                 document.querySelector(".errorAsunto").innerHTML =
-                    "El asunto es requerido ";
+                    "El asunto es requerido";
                 validación = false;
             }
-            if (mensaje == "" || expresion.test(mensaje) == false) {
+            if (mensaje == "" || expresionMensaje.test(mensaje) == false) {
                 document.querySelector(".errorMensaje").innerHTML =
-                    "El mensaje es requerido ";
+                    "El mensaje es requerido";
                 validación = false;
             }
             return validación;
@@ -97,9 +100,6 @@
                 exito();
             }
         });
-
-   
-
     </script>
 </body>
 
